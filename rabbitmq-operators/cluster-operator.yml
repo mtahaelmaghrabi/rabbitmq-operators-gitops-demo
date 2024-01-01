@@ -3,9 +3,9 @@ kind: Namespace
 metadata:
   labels:
     app.kubernetes.io/component: rabbitmq-operator
-    app.kubernetes.io/name: rabbitmq-system3
+    app.kubernetes.io/name: rabbitmq-system5
     app.kubernetes.io/part-of: rabbitmq
-  name: rabbitmq-system3
+  name: rabbitmq-system5
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -4410,7 +4410,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: rabbitmq-cluster-operator
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -4420,7 +4420,7 @@ metadata:
     app.kubernetes.io/name: rabbitmq-cluster-operator
     app.kubernetes.io/part-of: rabbitmq
   name: rabbitmq-cluster-leader-election-role
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 rules:
 - apiGroups:
   - coordination.k8s.io
@@ -4594,7 +4594,7 @@ metadata:
     app.kubernetes.io/name: rabbitmq-cluster-operator
     app.kubernetes.io/part-of: rabbitmq
   name: rabbitmq-cluster-leader-election-rolebinding
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -4602,7 +4602,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: rabbitmq-cluster-operator
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -4619,7 +4619,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: rabbitmq-cluster-operator
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -4629,7 +4629,7 @@ metadata:
     app.kubernetes.io/name: rabbitmq-cluster-operator
     app.kubernetes.io/part-of: rabbitmq
   name: rabbitmq-cluster-operator
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 spec:
   replicas: 1
   selector:

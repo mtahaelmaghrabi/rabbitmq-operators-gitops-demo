@@ -3,9 +3,9 @@ kind: Namespace
 metadata:
   labels:
     app.kubernetes.io/component: rabbitmq-operator
-    app.kubernetes.io/name: rabbitmq-system3
+    app.kubernetes.io/name: rabbitmq-system5
     app.kubernetes.io/part-of: rabbitmq
-  name: rabbitmq-system3
+  name: rabbitmq-system5
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
@@ -1306,7 +1306,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: messaging-topology-operator
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -1316,7 +1316,7 @@ metadata:
     app.kubernetes.io/name: rabbitmq-cluster-operator
     app.kubernetes.io/part-of: rabbitmq
   name: messaging-topology-leader-election-role
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 rules:
 - apiGroups:
   - coordination.k8s.io
@@ -1605,7 +1605,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: messaging-topology-leader-election-rolebinding
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -1613,7 +1613,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: messaging-topology-operator
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -1626,13 +1626,13 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: messaging-topology-operator
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: webhook-service
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 spec:
   ports:
   - port: 443
@@ -1648,7 +1648,7 @@ metadata:
     app.kubernetes.io/name: messaging-topology-operator
     app.kubernetes.io/part-of: rabbitmq
   name: messaging-topology-operator
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 spec:
   replicas: 1
   selector:
@@ -1694,11 +1694,11 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: serving-cert
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 spec:
   dnsNames:
-  - webhook-service.rabbitmq-system3.svc
-  - webhook-service.rabbitmq-system3.svc.cluster.local
+  - webhook-service.rabbitmq-system5.svc
+  - webhook-service.rabbitmq-system5.svc.cluster.local
   issuerRef:
     kind: Issuer
     name: selfsigned-issuer
@@ -1708,7 +1708,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: selfsigned-issuer
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 spec:
   selfSigned: {}
 ---
@@ -1716,7 +1716,7 @@ apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: rabbitmq-system3/serving-cert
+    cert-manager.io/inject-ca-from: rabbitmq-system5/serving-cert
   name: validating-webhook-configuration
 webhooks:
 - admissionReviewVersions:
@@ -1724,7 +1724,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-binding
   failurePolicy: Fail
   name: vbinding.kb.io
@@ -1744,7 +1744,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-exchange
   failurePolicy: Fail
   name: vexchange.kb.io
@@ -1764,7 +1764,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-federation
   failurePolicy: Fail
   name: vfederation.kb.io
@@ -1784,7 +1784,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-permission
   failurePolicy: Fail
   name: vpermission.kb.io
@@ -1804,7 +1804,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-policy
   failurePolicy: Fail
   name: vpolicy.kb.io
@@ -1824,7 +1824,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-queue
   failurePolicy: Fail
   name: vqueue.kb.io
@@ -1844,7 +1844,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-schemareplication
   failurePolicy: Fail
   name: vschemareplication.kb.io
@@ -1864,7 +1864,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-shovel
   failurePolicy: Fail
   name: vshovel.kb.io
@@ -1884,7 +1884,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-user
   failurePolicy: Fail
   name: vuser.kb.io
@@ -1904,7 +1904,7 @@ webhooks:
   clientConfig:
     service:
       name: webhook-service
-      namespace: rabbitmq-system3
+      namespace: rabbitmq-system5
       path: /validate-rabbitmq-com-v1beta1-vhost
   failurePolicy: Fail
   name: vvhost.kb.io

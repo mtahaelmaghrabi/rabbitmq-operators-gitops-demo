@@ -3,7 +3,7 @@ apiVersion: rabbitmq.com/v1beta1
 kind: Binding
 metadata:
   name: binding2
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 spec:
   vhost: "vhost2"
   source: fanout2

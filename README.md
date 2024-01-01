@@ -12,7 +12,9 @@ demo for RabbitMQ summit 2021 talk
 
 ## to Solve the previlige error
 ```
-oc adm policy add-scc-to-user anyuid -z rabbit2-server -n rabbitmq-system3
-oc adm policy add-scc-to-user hostaccess -z rabbit2-server -n rabbitmq-system3
-oc adm policy add-scc-to-user hostnetwork -z rabbit2-server -n rabbitmq-system3
+oc adm policy add-scc-to-user anyuid -z rabbit-cluster2-server -n rabbitmq-system4
+oc adm policy add-scc-to-user hostaccess -z rabbit-cluster2-server -n rabbitmq-system4
+oc adm policy add-scc-to-user hostnetwork -z rabbit-cluster2-server -n rabbitmq-system4
 ```
+
+

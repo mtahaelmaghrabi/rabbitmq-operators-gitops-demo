@@ -3,7 +3,7 @@ apiVersion: rabbitmq.com/v1beta1
 kind: Vhost
 metadata:
   name: vhost3
-  namespace: rabbitmq-system3
+  namespace: rabbitmq-system5
 spec:
   name: vhost3
   rabbitmqClusterReference:
