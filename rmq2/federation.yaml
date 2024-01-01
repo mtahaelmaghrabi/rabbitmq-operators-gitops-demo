@@ -3,7 +3,7 @@ apiVersion: rabbitmq.com/v1beta1
 kind: Federation
 metadata:
   name: federation-example
-  namespace: rabbitmq-system2
+  namespace: rabbitmq-system3
 spec:
   name: "origin"
   vhost: "downstream"

@@ -3,7 +3,7 @@ apiVersion: rabbitmq.com/v1beta1
 kind: Policy
 metadata:
   name: federation-policy
-  namespace: rabbitmq-system2
+  namespace: rabbitmq-system3
 spec:
   name: federation-policy
   vhost: "downstream"

@@ -3,7 +3,7 @@ apiVersion: rabbitmq.com/v1beta1
 kind: Queue
 metadata:
   name: qq1
-  namespace: rabbitmq-system2
+  namespace: rabbitmq-system3
 spec:
   name: qq1
   vhost: "vhost1"
