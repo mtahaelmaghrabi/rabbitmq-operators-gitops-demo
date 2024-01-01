@@ -3,7 +3,7 @@ apiVersion: rabbitmq.com/v1beta1
 kind: Exchange
 metadata:
   name: fanout1
-  namespace: rabbitmq-system
+  namespace: rabbitmq-system2
 spec:
   name: fanout1
   vhost: "vhost1"

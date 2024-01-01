@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: federation-uri
-  namespace: rabbitmq-system
+  namespace: rabbitmq-system2
 type: Opaque
 stringData:
-  uri: amqp://demo:demo@rabbit2.rabbitmq-system.svc.cluster.local/upstream
+  uri: amqp://demo:demo@rabbit2.rabbitmq-system2.svc.cluster.local/upstream
